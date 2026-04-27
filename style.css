@@ -58,5 +58,19 @@ display: block;
     color: whitesmoke;
     transition: 0.3s;
   }
-  
+
+  /* Result box */
+  #result {
+    padding: 15px;
+    margin: 20px auto;
+    padding: 15px;
+    width: 320px;
+    border-left: 6px solid teal;
+    border-radius: 10px;
+    background-color: whitesmoke;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+    font-size: medium;
+    font-weight: bold;
+    color: bisque;
+  }
 
