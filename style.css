@@ -12,3 +12,10 @@ body {
 background-color: teal;
 color: whitesmoke;}
 
+/* H1 */
+header h1 {
+  margin: 0;
+  font: size 28px; ;
+}
+
+/*  */
