@@ -5,4 +5,10 @@ body {
   text-align: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
- header
+
+/* Header */
+ header {padding: 20px;
+background-color: teal;
+color: whitesmoke;}
+
+/* Section */
