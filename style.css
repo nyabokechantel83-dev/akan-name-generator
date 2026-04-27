@@ -45,4 +45,18 @@ display: block;
     font-size: medium;
     border: 1px solid black;
   }
+  /* Button */
+  button {
+    margin-top: 15px;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    font-size: medium;
+    cursor: pointer;
+    border-radius: 8px;
+    background-color: teal;
+    color: whitesmoke;
+    transition: 0.3s;
+  }
+  
 
