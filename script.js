@@ -44,6 +44,11 @@ document.querySelector("#akan-form").addEventListener("submit", function(event) 
 
   let d = (4 * CC - 2 * CC - 1 + 45 * YY + Math.floor(1026 * (month + 1) / 100) + day) % 7;
 
+   // Make sure d is not negative
+  if (d < 0) {
+    d = d + 7;
+  }
+
 
 
   
