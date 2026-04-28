@@ -1,58 +1,51 @@
-document.addEventListener("DOMContentLoaded", function () {
+const dayNames = ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 
-  // Correct Akan mapping (0 = Saturday)
-  const dayNames = ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+const maleNames = ["Kwame", "Kwasi", "Kwadwo", "Kwaku", "Yaw", "Kofi", "Kwabena"];
+const femaleNames = ["Ama", "Akosua", "Adwoa", "Abenaa", "Akua", "Yaa", "Afua"];
 
-  const maleNames = ["Kwame", "Kwasi", "Kwadwo", "Kwabena", "Kwaku", "Yaw", "Kofi"];
+document.querySelector("#akan-form").addEventListener("submit", function (e) {
+  e.preventDefault();
 
-  const femaleNames = ["Ama", "Akosua", "Adwoa", "Abenaa", "Akua", "Yaa", "Afua"];
+  let DD = Number(document.querySelector("#day").value);
+  let MM = Number(document.querySelector("#month").value);
+  let YY = Number(document.querySelector("#year").value);
+  let gender = document.querySelector("#gender").value;
+  let resultBox = document.querySelector("#result");
 
-  const form = document.querySelector("#akan-form");
-  const resultBox = document.querySelector("#result");
+  if (!DD || !MM || !YY || !gender) {
+    resultBox.textContent = "Please fill all fields";
+    return;
+  }
 
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
+  // real date validation
+  let testDate = new Date(YY, MM - 1, DD);
+  if (
+    testDate.getFullYear() !== YY ||
+    testDate.getMonth() !== MM - 1 ||
+    testDate.getDate() !== DD
+  ) {
+    resultBox.textContent = "Invalid date!";
+    return;
+  }
 
-    let day = Number(document.querySelector("#day").value);
-    let month = Number(document.querySelector("#month").value);
-    let year = Number(document.querySelector("#year").value);
-    let gender = document.querySelector("#gender").value;
+  let CC = Math.floor(YY / 100);
+  let YY2 = YY % 100;
 
-    // Check empty inputs
-    if (!day || !month || !year || !gender) {
-      resultBox.textContent = "Please fill all fields";
-      return;
-    }
+  // Akan formula
+  let d = Math.floor(
+    (CC / 4) -
+    (2 * CC) -
+    1 +
+    (5 * YY2) / 4 +
+    (26 * (MM + 1)) / 10 +
+    DD
+  ) % 7;
 
-    // Adjust January & February
-    if (month === 1 || month === 2) {
-      month += 12;
-      year -= 1;
-    }
+  d = (d + 7) % 7;
 
-    let century = Math.floor(year / 100);
-    let yearPart = year % 100;
+  let akanName = gender === "male" ? maleNames[d] : femaleNames[d];
 
-    // Akan formula
-    let d = Math.floor(
-      Math.floor(century / 4) -
-      (2 * century) -
-      1 +
-      Math.floor((5 * yearPart) / 4) +
-      Math.floor((26 * (month + 1)) / 10) +
-      day
-    ) % 7;
-
-    // Fix negative results
-    d = (d + 7) % 7;
-
-    // Get Akan name
-    let akanName = gender === "male" ? maleNames[d] : femaleNames[d];
-
-    // Display result
-    resultBox.textContent =
-      "You were born on " + dayNames[d] +
-      " and your Akan name is " + akanName;
-  });
-
+  resultBox.textContent =
+    "You were born on " + dayNames[d] +
+    " and your Akan name is " + akanName;
 });
