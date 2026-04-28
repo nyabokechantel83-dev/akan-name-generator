@@ -10,3 +10,8 @@ const dayNames    = ["Thursday", "Friday", "Saturday", "Sunday", "Monday", "Tues
 
 // Listen for form submission
 document.querySelector("#akan-form").addEventListener("submit", function(event) {
+  
+  // Stop page from refreshing
+  event.preventDefault(); 
+  
+
