@@ -1,28 +1,37 @@
-// Akan Names 
-// The formula gives // Akan names mapped to what the formula actually output
-// The formula gives: 0=Thu, 1=Fri, 2=Sat, 3=Sun, 4=Mon, 5=Tue, 6=Wed
 
-const maleNames   = ["Yaw", "Kofi", "Kwame", "Kwasi", "Kwadwo", "Kwabena", "Kwaku"];
+// Akan Names
+
+const maleNames = ["Yaw", "Kofi", "Kwame", "Kwasi", "Kwadwo", "Kwabena", "Kwaku"];
 
 const femaleNames = ["Yaa", "Afua", "Ama", "Akosua", "Adwoa", "Abenaa", "Akua"];
 
-const dayNames    = ["Thursday", "Friday", "Saturday", "Sunday", "Monday", "Tuesday", "Wednesday"];
+const dayNames = ["Thursday", "Friday", "Saturday", "Sunday", "Monday", "Tuesday", "Wednesday"];
 
 // Listen for form submission
-document.querySelector("#akan-form").addEventListener("submit", function(event) {
-  
-  // Stop page from refreshing
-  event.preventDefault(); 
+document.querySelector("#akan-form").addEventListener("submit", function (event) {
+  event.preventDefault();
 
-  // Step 1: Get user input
-  const day    = Number(document.querySelector("#day").value);
-  const month  = Number(document.querySelector("#month").value);
-  const year   = Number(document.querySelector("#year").value);
+  const dayInput = document.querySelector("#day").value;
+  const monthInput = document.querySelector("#month").value;
+  const yearInput = document.querySelector("#year").value;
   const gender = document.querySelector("#gender").value;
 
   const resultBox = document.querySelector("#result");
 
-  // Step 2: Validate inputs
+  if (dayInput === "" || monthInput === "" || yearInput === "") {
+    resultBox.textContent = "Please fill in all fields.";
+    return;
+  }
+
+  const day = Number(dayInput);
+  const month = Number(monthInput);
+  const year = Number(yearInput);
+
+  if (isNaN(day) || isNaN(month) || isNaN(year)) {
+    resultBox.textContent = "Please enter valid numbers.";
+    return;
+  }
+
   if (day < 1 || day > 31) {
     resultBox.textContent = "Day must be between 1 and 31.";
     return;
@@ -38,36 +47,33 @@ document.querySelector("#akan-form").addEventListener("submit", function(event) 
     return;
   }
 
-   // Step 3: Calculate day of the week using the Akan formula
-  const CC = Math.floor(year / 100); // e.g. 1989 → 19
-  const YY = year % 100;             // e.g. 1989 → 89
+  const CC = Math.floor(year / 100);
+  const YY = year % 100;
 
-  let d = (4 * CC - 2 * CC - 1 + 45 * YY + Math.floor(1026 * (month + 1) / 100) + day) % 7;
+  // Akan Formula:
+  // d = ((4 * CC - 2 * CC - 1) + (5 * YY) + Math.floor((26 * (month + 1)) / 10) + day) % 7
+  // CC = century (first 2 digits of year)
+  // YY = year within century (last 2 digits)
 
-   // Make sure d is not negative
+  let d =
+    (( (CC * 4) - (2 * CC) - 1 ) +
+      (5 * YY) +
+      Math.floor((26 * (month + 1)) / 10) +
+      day) % 7;
+
   if (d < 0) {
     d = d + 7;
   }
 
-   // Make sure d is not negative
-  if (d < 0) {
-    d = d + 7;
-  }
-
-   // Step 4: Pick the Akan name based on gender
   let akanName;
+
   if (gender === "male") {
     akanName = maleNames[d];
   } else {
     akanName = femaleNames[d];
   }
 
-  // Step 5: Display the result
-  resultBox.textContent = "You were born on a " + dayNames[d] + ". Your Akan name is: " + akanName;
+  resultBox.textContent =
+    "You were born on a " + dayNames[d] +
+    ". Your Akan name is " + akanName + ".";
 });
-
-
-
-
-  
-
