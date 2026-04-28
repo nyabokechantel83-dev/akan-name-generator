@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Akan Generator</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
@@ -20,15 +20,15 @@
 
     <!-- Day -->
     <label>Day of Birth</label>
-    <input type="number" id="day" required>
+    <input type="number" id="day" placeholder="DD" min="1" max="31" required>
 
     <!-- Month -->
     <label>Month of Birth</label>
-    <input type="number" id="month" required>
+    <input type="number" id="month" placeholder="MM" min="1" max="12" required>
 
     <!-- Year -->
     <label>Year of Birth</label>
-    <input type="number" id="year" required>
+    <input type="number" id="year" placeholder="YYYY" min="1900" max="2100" required>
 
     <!-- Gender -->
     <label>Gender</label>
@@ -47,7 +47,7 @@
   <div id="result" class="result-box"></div>
 
   <!-- JavaScript link -->
-  <script src="script.js"></script>
+  <script src="js/script.js"></script>
 
 </body>
 </html>
