@@ -7,3 +7,6 @@ const maleNames   = ["Yaw", "Kofi", "Kwame", "Kwasi", "Kwadwo", "Kwabena", "Kwak
 const femaleNames = ["Yaa", "Afua", "Ama", "Akosua", "Adwoa", "Abenaa", "Akua"];
 
 const dayNames    = ["Thursday", "Friday", "Saturday", "Sunday", "Monday", "Tuesday", "Wednesday"];
+
+// Listen for form submission
+document.querySelector("#akan-form").addEventListener("submit", function(event) {
