@@ -28,19 +28,25 @@ document.querySelector("#akan-form").addEventListener("submit", function (e) {
     return;
   }
 
+  // adjust for Jan & Feb
+  if (MM === 1 || MM === 2) {
+    MM += 12;
+    YY -= 1;
+  }
+
   let CC = Math.floor(YY / 100);
   let YY2 = YY % 100;
 
-  // Akan formula
-  let d = Math.floor(
-    (CC / 4) -
-    (2 * CC) -
-    1 +
-    (5 * YY2) / 4 +
-    (26 * (MM + 1)) / 10 +
-    DD
-  ) % 7;
+  // ✅ FIXED FORMULA (NO PRECEDENCE BUGS)
+  let d =
+    (Math.floor(CC / 4) -
+      (2 * CC) -
+      1 +
+      Math.floor((5 * YY2) / 4) +
+      Math.floor((26 * (MM + 1)) / 10) +
+      DD) % 7;
 
+  // fix negative values
   d = (d + 7) % 7;
 
   let akanName = gender === "male" ? maleNames[d] : femaleNames[d];
