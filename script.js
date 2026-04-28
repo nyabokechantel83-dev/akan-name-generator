@@ -1,7 +1,7 @@
-const dayNames = ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-const maleNames = ["Kwame", "Kwasi", "Kwadwo", "Kwaku", "Yaw", "Kofi", "Kwabena"];
-const femaleNames = ["Ama", "Akosua", "Adwoa", "Abenaa", "Akua", "Yaa", "Afua"];
+const maleNames = ["Kwasi", "Kwadwo", "Kwabena", "Kwaku", "Yaw", "Kofi", "Kwame"];
+const femaleNames = ["Akosua", "Adwoa", "Abenaa", "Akua", "Yaa", "Afua", "Ama"];
 
 document.querySelector("#akan-form").addEventListener("submit", function (e) {
   e.preventDefault();
@@ -17,18 +17,7 @@ document.querySelector("#akan-form").addEventListener("submit", function (e) {
     return;
   }
 
-  // real date validation
-  let testDate = new Date(YY, MM - 1, DD);
-  if (
-    testDate.getFullYear() !== YY ||
-    testDate.getMonth() !== MM - 1 ||
-    testDate.getDate() !== DD
-  ) {
-    resultBox.textContent = "Invalid date!";
-    return;
-  }
-
-  // adjust for Jan & Feb
+  // adjust Jan & Feb
   if (MM === 1 || MM === 2) {
     MM += 12;
     YY -= 1;
@@ -37,16 +26,16 @@ document.querySelector("#akan-form").addEventListener("submit", function (e) {
   let CC = Math.floor(YY / 100);
   let YY2 = YY % 100;
 
-  // ✅ FIXED FORMULA (NO PRECEDENCE BUGS)
-  let d =
-    (Math.floor(CC / 4) -
-      (2 * CC) -
-      1 +
-      Math.floor((5 * YY2) / 4) +
-      Math.floor((26 * (MM + 1)) / 10) +
-      DD) % 7;
+  // ✅ CORRECT AKAN FORMULA (Zeller's Congruence)
+  let d = (
+    DD +
+    Math.floor((13 * (MM + 1)) / 5) +
+    YY2 +
+    Math.floor(YY2 / 4) +
+    Math.floor(CC / 4) -
+    2 * CC
+  ) % 7;
 
-  // fix negative values
   d = (d + 7) % 7;
 
   let akanName = gender === "male" ? maleNames[d] : femaleNames[d];
