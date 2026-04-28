@@ -38,6 +38,13 @@ document.querySelector("#akan-form").addEventListener("submit", function(event) 
     return;
   }
 
+   // Step 3: Calculate day of the week using the Akan formula
+  const CC = Math.floor(year / 100); // e.g. 1989 → 19
+  const YY = year % 100;             // e.g. 1989 → 89
+
+  let d = (4 * CC - 2 * CC - 1 + 45 * YY + Math.floor(1026 * (month + 1) / 100) + day) % 7;
+
+
 
   
 
