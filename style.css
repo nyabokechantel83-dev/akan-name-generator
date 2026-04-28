@@ -2,9 +2,10 @@
 body {
   text-align: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color:  #f0f0f0;
+  background-color: #f0f0f0;
 }
-/* header */
+
+/* Header */
 header {
   padding: 20px;
   color: white;
@@ -12,43 +13,48 @@ header {
 }
 
 /* Form */
-form {padding: 20px; 
-margin: 30px auto;
-width: 300px;
-border-radius: 8px;
-box-shadow:0 2px 8px rgba(0, 0, 0, 0.1) ;
-background-color: white;}
+form {
+  padding: 20px;
+  margin: 30px auto;
+  width: 300px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
 
-/* label */
+/* Label */
 label {
   margin-top: 10px;
   text-align: center;
   font-weight: bold;
   display: block;
 }
+
 /* Input and Select */
-input ,select {
+input, select {
   margin-top: 5px;
   padding: 8px;
-  width:100% ;
+  width: 100%;
   border-radius: 5px;
   border: 1px solid #ccc;
-   font-size: 14px;
+  font-size: 14px;
 }
 
 /* Button */
 button {
-   margin-top: 15px;
-padding: 10px;
-width: 100%;
-border-radius: 5px;
-border :none;
-font-size: medium;
-background-color: teal;
-color: white;
-cursor: pointer;
+  margin-top: 15px;
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  font-size: medium;
+  background-color: teal;
+  color: white;
+  cursor: pointer;
 }
-button:hoverP{
+
+/* Fixed hover — removed the P */
+button:hover {
   background-color: darkcyan;
 }
 
@@ -58,7 +64,7 @@ button:hoverP{
   margin: 10px auto 30px;
   width: 300px;
   border-radius: 8px;
-  color:white ;
+  color: white;
   background-color: teal;
   font-size: medium;
   font-weight: 600;
