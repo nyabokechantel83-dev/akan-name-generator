@@ -1,21 +1,23 @@
 /* Body */
 body {
-  margin:0 ;
-  padding: 0%;
+  margin: 0;
+  padding: 0;
   background-color: antiquewhite;
   text-align: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Header */
- header {padding: 20px;
-background-color: teal;
-color: whitesmoke;}
+header {
+  padding: 20px;
+  background-color: teal;
+  color: whitesmoke;
+}
 
 /* H1 */
 header h1 {
   margin: 0;
-  font: size 28px; ;
+  font-size: 28px;
 }
 
 /* Form */
@@ -27,50 +29,60 @@ form {
   background: whitesmoke;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
 }
- 
+
 /* Labels */
 label {
-margin-top: 10px;
-text-align: center;
-font-weight: bold;
-display: block;
+  margin-top: 10px;
+  text-align: left;
+  font-weight: bold;
+  display: block;
 }
-  /* Input size */
-  input,select {
-    margin: 8px auto;
-    padding: 12px;
-    width: 70%;
-    display: block;
-    border-radius: 8px;
-    font-size: medium;
-    border: 1px solid black;
-  }
-  /* Button */
-  button {
-    margin-top: 15px;
-    padding: 12px;
-    width: 100%;
-    border: none;
-    font-size: medium;
-    cursor: pointer;
-    border-radius: 8px;
-    background-color: teal;
-    color: whitesmoke;
-    transition: 0.3s;
-  }
 
-  /* Result box */
-  #result {
-    padding: 15px;
-    margin: 20px auto;
-    padding: 15px;
-    width: 320px;
-    border-left: 6px solid teal;
-    border-radius: 10px;
-    background-color: whitesmoke;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
-    font-size: medium;
-    font-weight: bold;
-    color: bisque;
-  }
+/* Input and Select */
+input, select {
+  margin: 8px auto;
+  padding: 12px;
+  width: 100%;
+  display: block;
+  border-radius: 8px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  background-color: white;
+  outline: none;
+}
 
+input:focus, select:focus {
+  border: 1px solid teal;
+}
+
+/* Button */
+button {
+  margin-top: 15px;
+  padding: 12px;
+  width: 100%;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 8px;
+  background-color: teal;
+  color: whitesmoke;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: darkcyan;
+}
+
+/* Result box */
+#result {
+  padding: 15px;
+  margin: 20px auto;
+  width: 320px;
+  border-left: 6px solid teal;
+  border-radius: 10px;
+  background-color: whitesmoke;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+  font-size: 16px;
+  font-weight: bold;
+  color: teal;
+}
