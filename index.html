@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Akan Generator</title>
+  <title>Akan Name Generator</title>
+
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -11,43 +13,38 @@
 
   <!-- Header -->
   <header>
-    <h1>AKAN NAME GENERATOR</h1>
-    <p>A web app that calculates birth day and assigns an Akan name by gender.</p>
+    <h1>Akan Name Generator</h1>
+    <p>Discover your Akan name based on your date of birth and Ghanaian tradition</p>
   </header>
 
-  <!-- Form Section -->
+  <!-- FORM -->
   <form id="akan-form">
 
-    <!-- Day -->
-    <label>Day of Birth</label>
-    <input type="number" id="day" placeholder="DD" min="1" max="31" required>
+    <label for="day">Day of Birth</label>
+    <input type="number" id="day" min="1" max="31" required>
 
-    <!-- Month -->
-    <label>Month of Birth</label>
-    <input type="number" id="month" placeholder="MM" min="1" max="12" required>
+    <label for="month">Month of Birth</label>
+    <input type="number" id="month" min="1" max="12" required>
 
-    <!-- Year -->
-    <label>Year of Birth</label>
-    <input type="number" id="year" placeholder="YYYY" min="1900" max="2100" required>
+    <label for="year">Year of Birth</label>
+    <input type="number" id="year" required>
 
-    <!-- Gender -->
-    <label>Gender</label>
+    <label for="gender">Gender</label>
     <select id="gender" required>
-      <option value="">Select Gender</option>
+      <option value="">Select gender</option>
       <option value="male">Male</option>
       <option value="female">Female</option>
     </select>
 
-    <!-- Button -->
     <button type="submit">Get Akan Name</button>
 
   </form>
 
-  <!-- Result -->
-  <div id="result" class="result-box"></div>
+  <!-- RESULT -->
+  <div id="result"></div>
 
-  <!-- JavaScript link -->
-  <script src="js/script.js"></script>
+  <!-- JavaScript -->
+  <script src="script.js"></script>
 
 </body>
 </html>
