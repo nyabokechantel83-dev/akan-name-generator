@@ -1,7 +1,7 @@
-// Zeller's outputs: 0=Sat, 1=Sun, 2=Mon, 3=Tue, 4=Wed, 5=Thu, 6=Fri
-const dayNames    = ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
-const maleNames   = ["Kwame",    "Kwasi",  "Kwadwo", "Kwabena", "Kwaku",     "Yaw",      "Kofi"];
-const femaleNames = ["Ama",      "Akosua", "Adwoa",  "Abenaa",  "Akua",      "Yaa",      "Afua"];
+// 0=Sun, 1=Mon, 2=Tue, 3=Wed, 4=Thu, 5=Fri, 6=Sat
+const dayNames    = ["Sunday",  "Monday",  "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const maleNames   = ["Kwasi",   "Kwadwo",  "Kwabena", "Kwaku",     "Yaw",      "Kofi",   "Kwame"];
+const femaleNames = ["Akosua",  "Adwoa",   "Abenaa",  "Akua",      "Yaa",      "Afua",   "Ama"];
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -21,27 +21,9 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    // Adjust January and February
-    if (MM === 1 || MM === 2) {
-      MM += 12;
-      YY -= 1;
-    }
-
-    let CC  = Math.floor(YY / 100);
-    let YY2 = YY % 100;
-
-    // Zeller's Congruence formula
-    let d = (
-      DD +
-      Math.floor((13 * (MM + 1)) / 5) +
-      YY2 +
-      Math.floor(YY2 / 4) +
-      Math.floor(CC / 4) -
-      2 * CC
-    ) % 7;
-
-    // Fix negative modulo
-    d = ((d % 7) + 7) % 7;
+    // JavaScript Date does all the work — no formula needed!
+    let date = new Date(YY, MM - 1, DD);
+    let d    = date.getDay(); // 0=Sun, 1=Mon ... 6=Sat
 
     // Pick the Akan name
     let akanName = gender === "male" ? maleNames[d] : femaleNames[d];
