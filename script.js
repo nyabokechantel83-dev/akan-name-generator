@@ -49,6 +49,24 @@ document.querySelector("#akan-form").addEventListener("submit", function(event) 
     d = d + 7;
   }
 
+   // Make sure d is not negative
+  if (d < 0) {
+    d = d + 7;
+  }
+
+   // Step 4: Pick the Akan name based on gender
+  let akanName;
+  if (gender === "male") {
+    akanName = maleNames[d];
+  } else {
+    akanName = femaleNames[d];
+  }
+
+  // Step 5: Display the result
+  resultBox.textContent = "You were born on a " + dayNames[d] + ". Your Akan name is: " + akanName;
+});
+
+
 
 
   
