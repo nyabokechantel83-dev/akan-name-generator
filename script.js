@@ -22,5 +22,22 @@ document.querySelector("#akan-form").addEventListener("submit", function(event) 
 
   const resultBox = document.querySelector("#result");
 
+  // Step 2: Validate inputs
+  if (day < 1 || day > 31) {
+    resultBox.textContent = "Day must be between 1 and 31.";
+    return;
+  }
+
+  if (month < 1 || month > 12) {
+    resultBox.textContent = "Month must be between 1 and 12.";
+    return;
+  }
+
+  if (gender === "") {
+    resultBox.textContent = "Please select a gender.";
+    return;
+  }
+
+
   
 
