@@ -13,5 +13,14 @@ document.querySelector("#akan-form").addEventListener("submit", function(event) 
   
   // Stop page from refreshing
   event.preventDefault(); 
+
+  // Step 1: Get user input
+  const day    = Number(document.querySelector("#day").value);
+  const month  = Number(document.querySelector("#month").value);
+  const year   = Number(document.querySelector("#year").value);
+  const gender = document.querySelector("#gender").value;
+
+  const resultBox = document.querySelector("#result");
+
   
 
