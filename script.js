@@ -11,7 +11,6 @@ document.querySelector("#akan-form").addEventListener("submit", function (e) {
   let gender = document.querySelector("#gender").value;
   let result = document.querySelector("#result");
 
-  // Adjust January and February
   if (MM === 1 || MM === 2) {
     MM += 12;
     YY -= 1;
@@ -20,7 +19,6 @@ document.querySelector("#akan-form").addEventListener("submit", function (e) {
   let CC = Math.floor(YY / 100);
   let yy = YY % 100;
 
-  // Formula from the board
   let d = (Math.floor(CC / 4) - (2 * CC) - 1 + Math.floor((5 * yy) / 4) + Math.floor((26 * (MM + 1)) / 10) + DD) % 7;
   d = ((d % 7) + 7) % 7;
 
